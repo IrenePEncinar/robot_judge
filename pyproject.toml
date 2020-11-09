@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "robot_judge"
+version = "0.1.0"
+description = "A simple application to teach the basics of ML through a robot judge"
+authors = ["IrenePEncinar <irene.p.encinar@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = "^3.1.3"
+pylint-django = "^2.3.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
