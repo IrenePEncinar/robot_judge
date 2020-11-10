@@ -17,7 +17,7 @@ class Juicio(models.Model):
     DEFENSA_PROPIA = 'fue en defensa propia'
     HISTORIAL_ABUSOS = 'historial de abusos'
     MENOS_400 = 'menos de 400€'
-    MAS_400 = 'menos de 400€'
+    MAS_400 = 'más de 400€'
 
   class Procedencia(models.TextChoices):
     MADRID = 'Madrid'
@@ -30,6 +30,10 @@ class Juicio(models.Model):
     MULTA = 'multa'
     CARCEL_2 = '2 años de cárcel'
     CARCEL_20 = '20 años de cárcel'
+
+  class TipoDataset(models.TextChoices):
+    TRAINING = 'training'
+    TEST = 'test'
     
   id = models.AutoField(primary_key=True)
   delito = models.CharField(max_length=200, choices=TipoDelito.choices, verbose_name='Tipo de delito')
@@ -37,4 +41,5 @@ class Juicio(models.Model):
   supuestos = models.CharField(max_length=200, choices=Supuesto.choices, verbose_name='Supuestos de hecho')
   procedencia = models.CharField(max_length=200, choices=Procedencia.choices, verbose_name='Lugar de procedencia del acusado')
   sentencia = models.CharField(max_length=200, choices=Sentencia.choices, verbose_name='Sentencia')
-  nombre_juez = models.CharField(max_length=200, null=True, blank=True)
+  nombre_juez = models.CharField(max_length=200, null=True, blank=True, verbose_name='Nombre del juez')
+  dataset = models.CharField(max_length=200, choices=TipoDataset.choices, null=True, blank=True)
