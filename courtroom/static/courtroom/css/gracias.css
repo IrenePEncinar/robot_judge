@@ -1,0 +1,20 @@
+h1 {
+  color: #001dc2b9;
+  font-family: 'Lobster';
+  text-align: center;
+  font-size: 70px;
+}
+
+p {
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  font-family: sans;
+  font-size: 20px;
+}
+
+#container {
+  margin-top: 15%;
+}

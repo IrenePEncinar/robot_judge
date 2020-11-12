@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nuevo Juicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+    {% load static %}
+    <link href="{% static 'courtroom/css/index.css' %}" rel="stylesheet">
+
+    {% load bootstrap4 %}
+
+  </head>
+  <body>
+    <div id="description">
+      <h1> Añade los datos de un juicio </h1>
+      <p> Para poder entrenar y probar nuestro modelo de ML, necesitamos generar datos. Con este formulario vamos a generar ejemplos de "juicios" en los que, dado un tipo de delito, si el acusado tenía antecedentes o no, su lugar de procedencia y ciertos supuestos de hecho, marcaremos cuál es la sentencia que más se acerca a un caso real</p>
+    </div>
+    <div id="form-container">
+      <form action="guardar_juicio" method="post">
+        {% csrf_token %}
+        <table cellspacing="20" cellpadding="5"> 
+          {{ form }}
+        </table>
+        <input type="submit" value="Guardar" />
+      </form>
+    </div>
+
+  </body>
+</html>

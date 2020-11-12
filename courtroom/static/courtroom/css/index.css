@@ -1,0 +1,54 @@
+body {
+  font-family: sans;
+}
+
+#description {
+  margin-top: 3%;
+}
+
+#description h1 {
+  color: #001dc2b9;
+  font-family: 'Lobster';
+  text-align: center;
+  font-size: 40px;
+}
+
+#description p {
+  font-style: italic;
+  font-size: 16px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 28px;
+}
+
+#form-container {
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#form-container form {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#form-container table {
+  width: 100%;
+}
+
+#form-container select {
+  background-color: white;
+  width: 100%;
+}
+
+#form-container input {
+  width: 100%;
+}
+
+#form-container th {
+  text-align: left;
+}
