@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.utils.translation import ngettext
 from django.http import HttpResponse
 import csv
@@ -12,13 +12,14 @@ class JuicioAdmin(admin.ModelAdmin):
   list_editable = ('dataset',)
   list_filter = ('dataset',)
   search_fields = ('nombre_juez',)
+  list_display_links = ('delito', )
   actions = ('mark_as_training', 'mark_as_test', 'export_selected_as_csv')
 
   def mark_as_training(self, request, queryset):
     updated = queryset.update(dataset=Juicio.TipoDataset.TRAINING)
     self.message_user(request, ngettext(
       '%d juicio marcado como training',
-      '%d juicios marcado como training',
+      '%d juicios marcados como training',
       updated,
     ) % updated, messages.SUCCESS)
   mark_as_training.short_description = 'Marcar seleccionados como conjunto de TRAINING'
@@ -27,7 +28,7 @@ class JuicioAdmin(admin.ModelAdmin):
     updated = queryset.update(dataset=Juicio.TipoDataset.TEST)
     self.message_user(request, ngettext(
       '%d juicio marcado como test',
-      '%d juicios marcado como test',
+      '%d juicios marcados como test',
       updated,
     ) % updated, messages.SUCCESS)
   mark_as_test.short_description = 'Marcar seleccionados como conjunto de TEST'
@@ -44,6 +45,14 @@ class JuicioAdmin(admin.ModelAdmin):
 
     for item in queryset:
       writer.writerow([item.delito, item.antecedentes, item.supuestos, item.procedencia, item.sentencia])
+
+    writer.writerow(['hurto', 'False', 'menos_400', 'Barcelona', 'multa'])
+    writer.writerow(['robo', 'True', 'más_400', 'Barcelona', 'carcel_2'])
+    writer.writerow(['asesinato', 'False', 'incapacidad', 'Madrid', 'carcel_2'])
+    writer.writerow(['homicidio', 'False', 'defensa_propia', 'Bilbao', 'absolución'])
+    writer.writerow(['lesiones', 'False', 'defensa_propia', 'Bilbao', 'absolución'])
+    writer.writerow(['lesiones', 'True', 'historial_abusos', 'Valencia', 'carcel_20'])
+    writer.writerow(['asesinato', 'True', 'dinero', 'Madrid', 'carcel_20'])
 
     return response
 

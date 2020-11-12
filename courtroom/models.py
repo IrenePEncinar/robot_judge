@@ -43,3 +43,6 @@ class Juicio(models.Model):
   sentencia = models.CharField(max_length=200, choices=Sentencia.choices, verbose_name='Sentencia')
   nombre_juez = models.CharField(max_length=200, null=True, blank=True, verbose_name='Nombre del juez')
   dataset = models.CharField(max_length=200, choices=TipoDataset.choices, null=True, blank=True)
+
+  def __str__(self):
+    return self.delito
