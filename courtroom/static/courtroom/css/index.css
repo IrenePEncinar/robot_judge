@@ -96,6 +96,10 @@ body {
     width: 90%;
   }
 
+  #form-container td {
+    padding: 7px 0;
+  }
+
   #form-container label {
     font-size: 12px;
   }
